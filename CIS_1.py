@@ -7,6 +7,12 @@ a2.init()
 a2.run("ints")
 Nelec=10
 nbasis=np.array([1])
+
+#Step_1: Running HF calculation and getting the coefficients
+#Step_2: Integral transformation from atomic basis to molecular basis
+#Step_3: Going from spatial orbitals to spin orbitals
+#Step_2: Setting up CI singles matrix
+
 #number of basis functions
 a2.igetrecpy("NBASTOT ",nbasis, 1)
 nbas=nbasis[0]
