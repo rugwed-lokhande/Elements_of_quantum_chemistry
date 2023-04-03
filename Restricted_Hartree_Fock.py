@@ -17,20 +17,22 @@ print("total number of basis function are ",nbas)
 olp_=np.zeros(nbas*nbas)
 a2.get1ehpy("overlap", olp_, nbas)
 olp=np.reshape(list(olp_),(nbas,nbas))
-#print("The overlap matrix is " +"\n" ,  olp)
+print("The overlap matrix is " +"\n" ,  olp)
 
 #array for one electron integrals
 oneh_=np.zeros(nbas*nbas)
 a2.get1ehpy("oneh", oneh_, nbas)
 oneh=np.reshape(list(oneh_),(nbas,nbas))
-#print("The one electron intrgrals are " +"\n" ,  oneh)
+print("The one electron intrgrals are " +"\n" ,  oneh)
 
 
 #array for two electron integrals
 twoh_=np.zeros(nbas*nbas*nbas*nbas)
 a2.get2ehpy("2elints", twoh_, nbas)
 twoh=np.reshape(list(twoh_),(nbas**2,nbas**2))
-#print("The two electron intrgrals are " +"\n" ,  twoh)
+print("The two electron intrgrals are " +"\n" ,  twoh)
+
+#reshaping two electron integrals array
 twoh__=twoh_.reshape(nbas,nbas,nbas,nbas)
 #print(twoh__)
 
@@ -41,7 +43,7 @@ e=e[idx_]
 v=v[:,idx_]
 
 
-#forming transformation matrix from diagonalized overlpa matrix
+#forming transformation matrix from diagonalized overlap matrix
 diag_olp=np.around(np.matmul(np.matmul(v.transpose(),olp),v),5)
 
 #transformation matrix
@@ -52,7 +54,7 @@ trans_mat= v @ diag_olp @ v.transpose()
 #print(trans_mat)
 
 
-#forming two electron matrix G as given in Szabo and Ostlund
+#forming two electron matrix G as given in Szabo and Ostlund: Modern Quantum Chemistry
 
 twoh__=twoh_.reshape(nbas,nbas,nbas,nbas)
 B=np.reshape(np.zeros(nbas*nbas*nbas*nbas),(nbas,nbas,nbas,nbas))
