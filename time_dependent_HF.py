@@ -7,6 +7,12 @@ a2.init()
 a2.run("ints")
 Nelec=10
 nbasis=np.array([1])
+
+#Step_1: Running HF calculation and getting the coefficients
+#Step_2: Integral transformation from atomic basis to molecular basis
+#Step_3: Going from spatial orbitals to spin orbitals
+#Step_2: Setting up TDHF matrix
+
 #number of basis functions
 a2.igetrecpy("NBASTOT ",nbasis, 1)
 nbas=nbasis[0]
@@ -228,4 +234,10 @@ for i in range(0,Nelec):
 ECIS,CCIS = np.linalg.eig(A)
 print('The excitation energis from CIS are', ECIS)
 print("E(CIS) = ", np.amax(ECIS), "Hartrees")
+# Solve TDHF matrix equation                                                                                                                                                                               
+M = np.bmat([[A,B],[-B,-A]])
+ETD,CTD = np.linalg.eig(M)
+print('The excitation energis from CIS are', ETD)
+
+print("E(TDHF) = ", abs(np.amax(ETD)), "Hartrees")
 
