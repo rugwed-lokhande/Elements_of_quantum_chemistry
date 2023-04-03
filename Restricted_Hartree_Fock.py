@@ -31,7 +31,7 @@ twoh_=np.zeros(nbas*nbas*nbas*nbas)
 a2.get2ehpy("2elints", twoh_, nbas)
 twoh=np.reshape(list(twoh_),(nbas**2,nbas**2))
 #print("The two electron intrgrals are " +"\n" ,  twoh)
-twoh__=twoh_.reshape(nbasis[0],nbasis[0],nbasis[0],nbasis[0])
+twoh__=twoh_.reshape(nbas,nbas,nbas,nbas)
 #print(twoh__)
 
 #diagonalization of overlap matrix
