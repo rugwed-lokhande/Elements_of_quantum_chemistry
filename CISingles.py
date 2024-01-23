@@ -5,6 +5,7 @@ import sys
 print(a2.__doc__)
 a2.init()
 a2.run("ints")
+#Specify the number of electrons
 Nelec=10
 nbasis=np.array([1])
 
